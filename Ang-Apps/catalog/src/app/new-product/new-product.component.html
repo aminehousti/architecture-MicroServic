@@ -1,0 +1,23 @@
+<div class="container mt-3 col-md-6 offset-md-3">
+  <form [formGroup]="productFormGroup" (ngSubmit)="handleAddProduct()">
+    <div class="mb-3">
+      <label>Nom :</label>
+      <input formControlName="name" type="text" class="form-control">
+    </div>
+    <small *ngIf="productFormGroup.controls['name'].errors && productFormGroup.controls['name'].touched" class="text-bg-danger">
+      {{getErrorMessage('name',productFormGroup.controls['name'].errors)}}
+    </small>
+    <div class="mb-3">
+      <label>Price :</label>
+      <input formControlName="price" type="text" class="form-control">
+    </div>
+    <small *ngIf="productFormGroup.controls['price'].errors && productFormGroup.controls['price'].touched" class="text-bg-danger">
+      {{getErrorMessage('price',productFormGroup.controls['price'].errors)}}
+    </small>
+    <div class="mb-3">
+      <label>Promotion :</label>
+      <input formControlName="promotion" type="checkbox" class="form-check">
+    </div>
+    <button [disabled]="!productFormGroup.valid" class="btn btn-info" type="submit"><i class="bi bi-cloud-download-fill"></i></button>
+  </form>
+</div>
